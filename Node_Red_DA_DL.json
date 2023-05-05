@@ -1,0 +1,515 @@
+[
+    {
+        "id": "fcc465818202100b",
+        "type": "tab",
+        "label": "Đồ án Đo lường điều khiển CT397",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0223fbcadace5172",
+        "type": "debug",
+        "z": "fcc465818202100b",
+        "name": "debug 26",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f4cd52b8ecfab270",
+        "type": "ui_text",
+        "z": "fcc465818202100b",
+        "group": "480a7218a88741d3",
+        "order": 1,
+        "width": 9,
+        "height": 2,
+        "name": "",
+        "label": "Trọng lượng:",
+        "format": "{{msg.payload}} kg",
+        "layout": "row-spread",
+        "className": "",
+        "x": 450,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "faafa63a47992fd3",
+        "type": "ui_dropdown",
+        "z": "fcc465818202100b",
+        "name": "",
+        "label": "Chọn nông sản",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "480a7218a88741d3",
+        "order": 3,
+        "width": 5,
+        "height": 3,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Xoài",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "Nhãn",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "Sầu Riêng",
+                "value": 3,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 180,
+        "y": 440,
+        "wires": [
+            [
+                "e9e9f4dce3768dd0",
+                "1dd90462ed6ca7b7"
+            ]
+        ]
+    },
+    {
+        "id": "e041acdab36ab70c",
+        "type": "ui_text_input",
+        "z": "fcc465818202100b",
+        "name": "",
+        "label": "Nhập giá xoài",
+        "tooltip": "",
+        "group": "480a7218a88741d3",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": "300",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "A",
+        "topicType": "msg",
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "ac15681f13570469"
+            ]
+        ]
+    },
+    {
+        "id": "0b869ed6eaedd9e1",
+        "type": "ui_text_input",
+        "z": "fcc465818202100b",
+        "name": "",
+        "label": "Nhập giá nhãn",
+        "tooltip": "",
+        "group": "480a7218a88741d3",
+        "order": 4,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": "300",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "B",
+        "topicType": "msg",
+        "x": 180,
+        "y": 300,
+        "wires": [
+            [
+                "96ae2b9e0fe21d5d"
+            ]
+        ]
+    },
+    {
+        "id": "dec1ebe6e3a36010",
+        "type": "ui_text_input",
+        "z": "fcc465818202100b",
+        "name": "",
+        "label": "Nhập giá sầu riêng",
+        "tooltip": "",
+        "group": "480a7218a88741d3",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": "300",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "C",
+        "topicType": "msg",
+        "x": 190,
+        "y": 340,
+        "wires": [
+            [
+                "dc3b40bcd2a5cad6"
+            ]
+        ]
+    },
+    {
+        "id": "ac15681f13570469",
+        "type": "function",
+        "z": "fcc465818202100b",
+        "name": "Biến xoài",
+        "func": "global.set(\"GiaXoai\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 260,
+        "wires": [
+            [
+                "599d2a4f32281a81"
+            ]
+        ]
+    },
+    {
+        "id": "96ae2b9e0fe21d5d",
+        "type": "function",
+        "z": "fcc465818202100b",
+        "name": "Biến nhãn",
+        "func": "global.set(\"GiaNhan\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 300,
+        "wires": [
+            [
+                "d5541cbfa47e68da"
+            ]
+        ]
+    },
+    {
+        "id": "dc3b40bcd2a5cad6",
+        "type": "function",
+        "z": "fcc465818202100b",
+        "name": "Biến sầu riêng",
+        "func": "global.set(\"GiaSauRieng\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 340,
+        "wires": [
+            [
+                "cc6c2e3046567f0a"
+            ]
+        ]
+    },
+    {
+        "id": "a5a8b5d253f7e088",
+        "type": "ui_text",
+        "z": "fcc465818202100b",
+        "group": "480a7218a88741d3",
+        "order": 7,
+        "width": 9,
+        "height": 2,
+        "name": "",
+        "label": "Giá tiền là: ",
+        "format": "{{msg.payload}} Đồng",
+        "layout": "row-spread",
+        "className": "",
+        "x": 630,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "599d2a4f32281a81",
+        "type": "debug",
+        "z": "fcc465818202100b",
+        "name": "debug 28",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e9e9f4dce3768dd0",
+        "type": "function",
+        "z": "fcc465818202100b",
+        "name": "Test",
+        "func": "global.set(\"loaiNS\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "a6314a24c332c351"
+            ]
+        ]
+    },
+    {
+        "id": "d5541cbfa47e68da",
+        "type": "debug",
+        "z": "fcc465818202100b",
+        "name": "debug 30",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "cc6c2e3046567f0a",
+        "type": "debug",
+        "z": "fcc465818202100b",
+        "name": "debug 31",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e9d315bcd3ddf95b",
+        "type": "json",
+        "z": "fcc465818202100b",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 290,
+        "y": 120,
+        "wires": [
+            [
+                "5faf5ce2324b6107",
+                "0223fbcadace5172",
+                "f4cd52b8ecfab270"
+            ]
+        ]
+    },
+    {
+        "id": "1dd90462ed6ca7b7",
+        "type": "function",
+        "z": "fcc465818202100b",
+        "name": "ouput json",
+        "func": "var mangoCost = global.get(\"GiaXoai\");\nvar longanCost = global.get(\"GiaNhan\");\nvar durianCost = global.get(\"GiaSauRieng\");\nvar L = msg.payload;\n// var M = \"{\\\"type\\\":\\\"1\\\",\\\"mangoCost\\\":\\\"0\\\",\\\"longanCost\\\":\\\"0\\\",\\\"durianCost\\\":\\\"0\\\"}\";\n\nvar ojs = {type: L, mangoCost: mangoCost, longanCost: longanCost, durianCost: durianCost};\nvar M = JSON.stringify(ojs);\n\nmsg.payload = M;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 480,
+        "wires": [
+            [
+                "23ac0f9fc7f3015a",
+                "ea4b691ef03d89e6"
+            ]
+        ]
+    },
+    {
+        "id": "23ac0f9fc7f3015a",
+        "type": "debug",
+        "z": "fcc465818202100b",
+        "name": "debug 32",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ea4b691ef03d89e6",
+        "type": "websocket out",
+        "z": "fcc465818202100b",
+        "name": "Test Out",
+        "server": "",
+        "client": "06ca74f6bf2ef9fa",
+        "x": 640,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "bb46ae7230a7ecde",
+        "type": "websocket in",
+        "z": "fcc465818202100b",
+        "name": "Test In",
+        "server": "",
+        "client": "06ca74f6bf2ef9fa",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "e9d315bcd3ddf95b"
+            ]
+        ]
+    },
+    {
+        "id": "1e1e17833d0fc200",
+        "type": "inject",
+        "z": "fcc465818202100b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\":1,\"mangoCost\":7000,\"longanCost\":10000,\"durianCost\":8000}",
+        "payloadType": "str",
+        "x": 190,
+        "y": 620,
+        "wires": [
+            [
+                "11872532c6dbac23"
+            ]
+        ]
+    },
+    {
+        "id": "11872532c6dbac23",
+        "type": "websocket out",
+        "z": "fcc465818202100b",
+        "name": "Test Out",
+        "server": "",
+        "client": "06ca74f6bf2ef9fa",
+        "x": 380,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "a6314a24c332c351",
+        "type": "debug",
+        "z": "fcc465818202100b",
+        "name": "debug 33",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5faf5ce2324b6107",
+        "type": "function",
+        "z": "fcc465818202100b",
+        "name": "function 33",
+        "func": "var cannang = msg.payload;\n// global.set(\"cannang\",msg.payload);\nvar ThanhTien = 0;\nvar loaiNS = global.get(\"loaiNS\");\nswitch(loaiNS) {\n    case 1:\n        ThanhTien = cannang *global.get(\"GiaXoai\");\n        break;\n    case 2:\n        ThanhTien = cannang * global.get(\"GiaNhan\");\n        break;\n    case 3:\n        ThanhTien = cannang * global.get(\"GiaSauRieng\");\n        break;\n}\n\nreturn { payload: ThanhTien };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 60,
+        "wires": [
+            [
+                "a5a8b5d253f7e088"
+            ]
+        ]
+    },
+    {
+        "id": "01ffc0faaf44d8bf",
+        "type": "inject",
+        "z": "fcc465818202100b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "55000",
+        "payloadType": "num",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "e041acdab36ab70c"
+            ]
+        ]
+    },
+    {
+        "id": "480a7218a88741d3",
+        "type": "ui_group",
+        "name": "CT397 nhóm 03 ",
+        "tab": "9d465015143b9387",
+        "order": 1,
+        "disp": true,
+        "width": 9,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "06ca74f6bf2ef9fa",
+        "type": "websocket-client",
+        "path": "ws://192.168.20.100:80/ws",
+        "tls": "",
+        "wholemsg": "false",
+        "hb": "0",
+        "subprotocol": ""
+    },
+    {
+        "id": "9d465015143b9387",
+        "type": "ui_tab",
+        "name": "Đồ án đo lường điều khiển",
+        "icon": "dashboard",
+        "order": 9,
+        "disabled": false,
+        "hidden": false
+    }
+]
